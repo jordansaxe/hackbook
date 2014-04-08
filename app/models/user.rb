@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validate :is_18_years_old
 
   def self.named(name)
-      where(name: name)
+      where("lower(name) = ?", name.downcase)
   end
 
   def is_18_years_old

@@ -12,6 +12,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def search
+    @users = User.named(params[:q])
+    
+    render 'index'
+  end
+
   def edit
   end
 

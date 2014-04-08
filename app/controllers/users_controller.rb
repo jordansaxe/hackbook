@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    if params[:q].present?
+      @users = User.named(params[:q])
+    else
+      @users = User.all
+    end
   end
 
   def show
@@ -10,12 +14,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-  end
-
-  def search
-    @users = User.named(params[:q])
-    
-    render 'index'
   end
 
   def edit

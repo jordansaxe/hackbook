@@ -1,3 +1,10 @@
+<h1><%= link_to 'Home', users_path %></h1>
+
+<%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :q, params[:q], placeholder: 'search' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
 <h1>Listing users</h1>
 
 <table>
@@ -28,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path %> <br />
